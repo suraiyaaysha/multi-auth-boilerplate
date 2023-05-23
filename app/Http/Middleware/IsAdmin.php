@@ -13,6 +13,7 @@ class IsAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
+
     public function handle(Request $request, Closure $next): Response
     {
         // return $next($request);
@@ -22,4 +23,5 @@ class IsAdmin
 
         return redirect('home')->with('error',"Only admin can access!");
     }
+
 }

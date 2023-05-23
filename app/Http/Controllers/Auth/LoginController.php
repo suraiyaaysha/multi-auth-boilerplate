@@ -28,6 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+
     // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -54,12 +55,19 @@ class LoginController extends Controller
             if (auth()->user()->is_admin == 1) {
                 return redirect()->route('admin.route');
             }else{
-                return redirect()->route('home');
+                return redirect()->route('home'); // Later it will declear user dashboard
             }
         }else{
             return redirect()->route('login')
                 ->with('error','Email & Password are incorrect.');
         }
+    }
+
+
+    // To show different login form for admin
+    public function showAdminLoginForm()
+    {
+        return view('auth.admin-login', ['url' => route('admin-login'), 'title'=>'Admin']);
     }
 
 }
